@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         binding.ticketType.setOnCheckedChangeListener { group, checkedId ->
             binding.purchase.apply {
                 isEnabled = true
-                setBackgroundColor("#dfe26f".toColorInt())
+                setBackgroundColor("#E0E270".toColorInt())
             }
 
             price = when(checkedId){
@@ -42,12 +42,15 @@ class MainActivity : AppCompatActivity() {
             count++
             binding.quantity.text = count.toString()
             updateTotal(binding.totalPrice)
+            binding.decrement.isEnabled = true
         }
+
 
         binding.decrement.setOnClickListener {
             if (count > 0) count--
             binding.quantity.text = count.toString()
             updateTotal(binding.totalPrice)
+            if (count == 0) binding.decrement.isEnabled = false
         }
 
     }
